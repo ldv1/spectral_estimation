@@ -2,14 +2,14 @@
 
 ## Motivation
 This is an attempt to reproduce some results presented in 
-[Bayesian Spectrum Estimation of Unevenly Sampled Nonstationary Data]
-(https://affect.media.mit.edu/pdfs/02.qi-minka-picard.pdf)
+[Bayesian Spectrum Estimation of Unevenly Sampled Nonstationary Data](https://affect.media.mit.edu/pdfs/02.qi-minka-picard.pdf)
 by Qi et al.
-They attack the problem of spectral estimation. 
+
+They attacked the problem of spectral estimation. 
 Traditional methods assume stationarity and uniform spacing
 between samples of data.
 To overcome those limitations, Qi et al.
-use a non-stationary Kalman filter
+used a non-stationary Kalman filter
 to jointly estimate all spectral coefficients instantaneously.
 
 
@@ -44,10 +44,16 @@ with a discretization dt=0.002 (it must be smaller than 0.004, the inverse gives
 All parameters are set to their defaults otherwise.
 
 Without any observation noise, we get:
-![alt text](kfiltering_wo_noise.png "Evenly sampled signal that contains one 125Hz sinusoid wave modulated with an exponentially fast decaying amplitude - No observation noise.")
+<p align="center">
+ <img src="kfiltering_wo_noise.png">
+Evenly sampled signal that contains one 125Hz sinusoid wave modulated with an exponentially fast decaying amplitude - No observation noise.
+</p>
 
 With observation noise with standard deviation of 0.1, we get:
-![alt text](kfiltering_w_noise.png "Evenly sampled signal that contains one 125Hz sinusoid wave modulated with an exponentially fast decaying amplitude - Observation of 0.1 (std deviation).")
+<p align="center">
+ <img src="kfiltering_w_noise.png">
+Evenly sampled signal that contains one 125Hz sinusoid wave modulated with an exponentially fast decaying amplitude - Observation of 0.1 (std deviation).
+</p>
 
 ## Future work
 * Implement the Kalman smoothing.
