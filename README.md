@@ -46,12 +46,15 @@ All parameters are set to their defaults otherwise.
 Without any observation noise, we get:
 <p align="center">
  <img src="kfiltering_wo_noise.png">
+</p>
+<p align="center">
 Evenly sampled signal that contains one 125Hz sinusoid wave modulated with an exponentially fast decaying amplitude - No observation noise.
 </p>
-
 With observation noise with standard deviation of 0.1, we get:
 <p align="center">
  <img src="kfiltering_w_noise.png">
+</p>
+<p align="center">
 Evenly sampled signal that contains one 125Hz sinusoid wave modulated with an exponentially fast decaying amplitude - Observation of 0.1 (std deviation).
 </p>
 
