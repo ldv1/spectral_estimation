@@ -1,31 +1,29 @@
-% user inputs
-% true observation noise
-sigtrue = 0.1;
-% time discretization
-dt = 0.002;
-printf("dt = %f\n", dt);
-t = [0:dt:2];
-% observations
-f_true = 125
-f = [ 1:1:125 ];
-printf("time-step must be smaller than %f\n", 0.5/f(end))
-beta = 0.8;
-y = exp(-beta*t).*cos(2*pi*f_true*t);
-y_noisy = y + sigtrue*randn(size(y));
+% spectrum estimation by Kalman filtering:
 
-% spectrum estimation by Kalman filtering
-% the state has dimension ns
-ns = 1+2*size(f,2)
-% the process noise is characterized by Z=zI
-z = 1000;
-% prior on the first state
-m0 = zeros(ns,1);
-V0 = (10)^2*eye(ns);
-% guess of the observation noise
-sigma = sigtrue
+% Inputs
+%% t: time discretization
+%% y_noisy: true signal, possibly contaminated by (Gaussian) noise
+%% the process noise is characterized by Z=zI
+%% m0, V0: prior on the first (hidden) state
+%% sigma: standard deviation of the observation noise
+
+% Outputs
+%% Mean m and covariance matrix V of the state at each time-step 
+%% Mean is of size ns-x-ns-t_lentgh
+%% where ns is the dimension of the state and t_length the number of time-steps
+
+function [ m, V ] = kfiltering(t,y_noisy,f,z,m0,V0,sigma,verbose)
+
+cputime0 = cputime;
+
+% dimension of the state
+ns = 1+2*size(f,2);
 % Kalman filtering
 t_length = size(t,2);
-printf("starting Kalman filtering over %d iterations:\n",t_length)
+if verbose
+	printf("starting Kalman filtering over %d iterations:\n",t_length)
+	printf("time-step must be smaller than %f\n", 0.5/f(end))
+end
 % mean and variance of the state
 V = zeros(ns,ns,t_length);
 m = zeros(ns,t_length);
@@ -46,26 +44,6 @@ for k = 2:t_length
 	m(:,k) = m(:,k-1) + K*(y_noisy(k)-c*m(:,k-1));
 end
 
-w = 600;
-h = 600;
-fh1 = figure('Position',[150,150,w,h]);
-
-subplot(2,1,1);
-hold on;
-plot(t,exp(-beta*t), 'linewidth', 3, 'color', 'red');
-plot(t,m(end,:), 'linewidth', 2, 'color', 'black');
-legend('ground truth','mean prediction for amplitude at f=125Hz')
-
-subplot(2,1,2);
-hold on;
-for k = 1:ns
-	plot(t,m(k,:), 'linewidth', 2, 'color', 'black');
+if verbose
+	printf("cputime: %.1fs.\n",cputime-cputime0)
 end
-axis([0 2 -0.4 1])
-legend('Mean predictions for amplitude at all frequencies')
-
-disp(' ')
-disp('Press any key to end.')
-pause
-close(fh1);
-clear all;
