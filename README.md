@@ -85,6 +85,9 @@ decay is exponential, this does not hold. The figure below shows much better pre
 The model has no built-in device to induce sparsity. We will set a spike and slab prior
 on the state. This is a natural way to express a prior belief that most
 frequencies are exactly zero.
+* The treatment could be done using variational Bayesian methods as in
+[Unified Inference for Variational Bayesian Linear Gaussian State-Space Models](https://papers.nips.cc/paper/3023-unified-inference-for-variational-bayesian-linear-gaussian-state-space-models.pdf)
+by Barber and Chiappa.
 
 ## Authors
 Laurent de Vito
