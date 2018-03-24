@@ -81,7 +81,7 @@ decay is exponential, this does not hold. The figure below shows much better pre
 </table>
 
 ## Future work
-* It is assumed that the signals is composed of only a few number of frequencies.
+* It is assumed that the signal is composed of only a few number of frequencies.
 The model has no built-in device to induce sparsity. We will set a spike and slab prior
 on the state. This is a natural way to express a prior belief that most
 frequencies are exactly zero.
