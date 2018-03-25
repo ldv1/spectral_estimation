@@ -54,8 +54,8 @@ All parameters are set to their defaults if not explicitly specified, in particu
     <td><img src="test_noisy_sine_125_z_1000_smoothing.png" width="400" hspace="10" /></td>
   </tr>
   <tr>
-    <td>Kalman filtering.</td>
-    <td>Kalman smoothing.</td>
+    <td align="center">Kalman filtering.</td>
+    <td align="center">Kalman smoothing.</td>
   </tr>
   <tr>
     <td colspan="2">Evenly sampled noisy (std 0.1) signal that contains one 125Hz sinusoid wave modulated with an exponentially fast decaying amplitude, `z=1000`; in the first row  the true amplitude of the signal is shown in red whereas the predictive mean for the amplitude at 125Hz is shown in black; in the second row, all amplitudes are plotted.  </td>
@@ -72,8 +72,8 @@ decay is exponential, this does not hold. The figure below shows much better pre
     <td><img src="test_noisy_sine_125_z_1_smoothing.png" width="400" hspace="10" /></td>
   </tr>
   <tr>
-    <td>Kalman filtering.</td>
-    <td>Kalman smoothing.</td>
+    <td align="center">Kalman filtering.</td>
+    <td align="center">Kalman smoothing.</td>
   </tr>
   <tr>
     <td colspan="2">Evenly sampled noisy (std 0.1) signal that contains one 125Hz sinusoid wave modulated with an exponentially fast decaying amplitude, `z=1`; in the first row  the true amplitude of the signal is shown in red whereas the predictive mean for the amplitude at 125Hz is shown in black; in the second row, all amplitudes are plotted.</td>
